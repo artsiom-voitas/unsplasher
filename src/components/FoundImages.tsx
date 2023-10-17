@@ -32,10 +32,10 @@ export default function FoundImages() {
                 .get(
                     `https://api.unsplash.com/search/photos?page=${page}&query=${query}&per_page=15&client_id=${unsplashKey}&order_by=${orderBy}`
                 )
-
                 .then((res) => {
                     const pagesAmount = res.data['total_pages'];
                     const imgs = res.data.results;
+
                     setImages(imgs);
                     if (pagesAmount > 100) {
                         setTotalPages(100);
@@ -64,6 +64,7 @@ export default function FoundImages() {
                             <ImageCard
                                 img={img.urls.regular}
                                 key={img.id}
+                                imgData={img}
                             />
                         ))}
                     </div>

@@ -1,25 +1,29 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import AddToFavoritesButton from './AddToFavoritesButton';
+import { UnsplashRespond } from './FoundImages';
 import { Card } from './ui/card';
 
 interface ImageCardProps {
     img: string;
+    imgData: UnsplashRespond;
 }
 
-export default function ImageCard({ img }: ImageCardProps) {
+const AnimatedCard = motion(Card);
+
+export default function ImageCard({ img, imgData }: ImageCardProps) {
     return (
-        <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.9 }}>
-            <Card className="h-fit max-w-[410px] rounded-xl">
-                <Image
-                    className="rounded-xl"
-                    src={img}
-                    alt={'Unsplash Image'}
-                    width={410}
-                    height={513}
-                />
-            </Card>
-        </motion.div>
+        <AnimatedCard
+            className="relative h-fit max-w-[410px] rounded-xl"
+            whileHover={{ scale: 1.05 }}>
+            <Image
+                className="rounded-xl"
+                src={img}
+                alt={'Unsplash Image'}
+                width={410}
+                height={513}
+            />
+            <AddToFavoritesButton imageData={imgData} />
+        </AnimatedCard>
     );
 }

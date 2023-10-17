@@ -1,11 +1,11 @@
-import { ToggleTheme } from '@/components/toggle-theme';
-import { UserButton } from '@clerk/nextjs';
+import FoundImages from '@/components/FoundImages';
+import Header from '@/components/Header';
 
 export default function Home() {
     return (
-        <main className="flex justify-between">
-            <UserButton afterSignOutUrl="/" />
-            <ToggleTheme />
+        <main className="container h-full w-full">
+            <Header />
+            <FoundImages />
         </main>
     );
 }

@@ -1,13 +1,13 @@
 import { UserButton } from '@clerk/nextjs';
 
-import FilterButton from './FilterButton';
+import FilterButtons from './FilterButtons';
 import { ToggleTheme } from './toggle-theme';
 import { Button } from './ui/button';
 
 export default function Header() {
     return (
-        <header className="flex justify-between">
-            <FilterButton />
+        <header className="my-4 flex justify-between">
+            <FilterButtons />
             <div className="flex items-center gap-3">
                 <ToggleTheme />
                 <Button

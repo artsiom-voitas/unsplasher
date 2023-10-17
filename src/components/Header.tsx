@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <header className="my-4 flex justify-between">
             <FilterButtons />
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col-reverse items-center gap-1 sm:gap-3 sm:flex-row">
                 <ToggleTheme />
                 <Button
                     variant="outline"

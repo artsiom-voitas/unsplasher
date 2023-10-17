@@ -47,16 +47,16 @@ export default function FilterButtons() {
     }, [query, page, orderBy]);
 
     return (
-        <div className="flex justify-between gap-3">
+        <div className="flex flex-col justify-between gap-1 sm:flex-row sm:gap-3">
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button
                         variant="outline"
-                        className="capitalize">
+                        className="w-20 text-xs capitalize sm:w-full sm:text-sm">
                         {collection}
                     </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56">
+                <DropdownMenuContent className="w-36 sm:w-56">
                     <DropdownMenuRadioGroup
                         value={collection}
                         onValueChange={setCollection}>
@@ -66,7 +66,7 @@ export default function FilterButtons() {
                                 href={`/?collection=${filter}&page=1&order_by=relevant`}>
                                 <DropdownMenuRadioItem
                                     value={filter}
-                                    className="capitalize">
+                                    className="text-xs capitalize sm:text-sm">
                                     {filter}
                                 </DropdownMenuRadioItem>
                             </Link>
@@ -78,11 +78,11 @@ export default function FilterButtons() {
                 <DropdownMenuTrigger asChild>
                     <Button
                         variant="outline"
-                        className="capitalize">
+                        className="sm: w-20 text-xs capitalize sm:w-full sm:text-sm">
                         {orderValue}
                     </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56">
+                <DropdownMenuContent className="w-36 sm:w-56">
                     <DropdownMenuRadioGroup
                         value={orderValue}
                         onValueChange={setOrderValue}>
@@ -92,7 +92,7 @@ export default function FilterButtons() {
                                 href={`/?collection=${query}&page=1&order_by=${filter}`}>
                                 <DropdownMenuRadioItem
                                     value={filter}
-                                    className="capitalize">
+                                    className="text-xs capitalize sm:text-sm">
                                     {filter}
                                 </DropdownMenuRadioItem>
                             </Link>

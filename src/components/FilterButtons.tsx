@@ -92,7 +92,8 @@ export default function FilterButtons() {
                                 href={`/?collection=${query}&page=1&order_by=${filter}`}>
                                 <DropdownMenuRadioItem
                                     value={filter}
-                                    className="text-xs capitalize sm:text-sm">
+                                    className="text-xs capitalize sm:text-sm
+                                    ">
                                     {filter}
                                 </DropdownMenuRadioItem>
                             </Link>

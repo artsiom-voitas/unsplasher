@@ -1,6 +1,7 @@
 'use client';
 
 import Header from '@/components/Header';
+import Spinner from '@/components/Spinner';
 import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -11,12 +12,17 @@ import { useReadLocalStorage } from 'usehooks-ts';
 export default function Favorites() {
     const favorites = useReadLocalStorage<string[]>('favorites');
     const [pageFav, setPageFav] = useState<string[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const AnimatedCard = motion(Card);
 
     useEffect(() => {
+        setIsLoading(true);
         if (favorites) {
             setPageFav(favorites);
         }
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 1500);
     }, [favorites]);
 
     return (
@@ -25,29 +31,33 @@ export default function Favorites() {
             <h1 className="mt-4 flex scroll-m-20 justify-center text-4xl font-extrabold tracking-tight lg:text-5xl">
                 Your Favorite pictures
             </h1>
-            <ResponsiveMasonry
-                className="my-8"
-                columnsCountBreakPoints={{ 300: 1, 500: 2, 700: 3 }}>
-                <Masonry
-                    columnsCount={3}
-                    gutter="20px">
-                    {pageFav.map((favorite, key) => (
-                        <AnimatedCard
-                            className="h-fit max-w-[410px] rounded-xl"
-                            whileHover={{ scale: 1.05 }}
-                            key={key}>
-                            <Image
-                                key={key}
-                                src={favorite}
-                                width={410}
-                                height={513}
-                                className="rounded-xl"
-                                alt="One of your favorite pictures"
-                            />
-                        </AnimatedCard>
-                    ))}
-                </Masonry>
-            </ResponsiveMasonry>
+            {isLoading ? (
+                <Spinner />
+            ) : (
+                <ResponsiveMasonry
+                    className="my-8"
+                    columnsCountBreakPoints={{ 300: 1, 500: 2, 700: 3 }}>
+                    <Masonry
+                        columnsCount={3}
+                        gutter="20px">
+                        {pageFav.map((favorite, key) => (
+                            <AnimatedCard
+                                className="h-fit max-w-[410px] rounded-xl"
+                                whileHover={{ scale: 1.05 }}
+                                key={key}>
+                                <Image
+                                    key={key}
+                                    src={favorite}
+                                    width={410}
+                                    height={513}
+                                    className="rounded-xl"
+                                    alt="One of your favorite pictures"
+                                />
+                            </AnimatedCard>
+                        ))}
+                    </Masonry>
+                </ResponsiveMasonry>
+            )}
         </main>
     );
 }

@@ -6,9 +6,9 @@ import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import { PacmanLoader } from 'react-spinners';
 import ImageCard from './ImageCard';
 import PaginatedItems from './Pagination';
+import Spinner from './Spinner';
 
 export interface UnsplashRespond {
     id: string;
@@ -53,12 +53,7 @@ export default function FoundImages() {
     return (
         <section className="mt-8">
             {isLoading ? (
-                <div className="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]">
-                    <PacmanLoader
-                        color="#800080"
-                        size={75}
-                    />
-                </div>
+                <Spinner />
             ) : (
                 <>
                     <ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 500: 2, 700: 3 }}>

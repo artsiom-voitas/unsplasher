@@ -1,6 +1,5 @@
 'use client';
 
-import { unsplashKey } from '@/api';
 import { unsplashBaseUrl } from '@/lib/utils';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';

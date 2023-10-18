@@ -14,7 +14,7 @@
   <p align="center">
     Search for Images on UnsplashAPI
     <br />
-    <a href="https://movie-search-acpn.vercel.app/"><strong>View Demo</strong></a>
+    <a href="https://slmax-react-next-testovoe-zadanie-v2-eta.vercel.app/"><strong>View Demo</strong></a>
     <br />
     <br />
     <a href="https://github.com/artsiom-voitas/slmax-react-next-testovoe-zadanie-v2/issues">Report Bug</a>

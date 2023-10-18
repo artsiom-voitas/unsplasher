@@ -8,6 +8,7 @@ import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import ImageCard from './ImageCard';
 import PaginatedItems from './Pagination';
 import Spinner from './Spinner';
+import { unsplashKey } from '@/api';
 
 export interface UnsplashRespond {
     id: string;
@@ -31,7 +32,7 @@ export default function FoundImages() {
             setIsLoading(true);
             axios
                 .get(
-                    `${unsplashBaseUrl}page=${page}&query=${query}&per_page=15&client_id=${process.env.UNSPLASH_ACCESS_KEY}&order_by=${orderBy}`
+                    `${unsplashBaseUrl}page=${page}&query=${query}&per_page=15&client_id=${unsplashKey}&order_by=${orderBy}`
                 )
                 .then((res) => {
                     const pagesAmount = res.data['total_pages'];

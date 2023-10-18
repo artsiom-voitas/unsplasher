@@ -1,13 +1,14 @@
 'use client';
 
 import { unsplashKey } from '@/api';
+import { unsplashBaseUrl } from '@/lib/utils';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { PacmanLoader } from 'react-spinners';
 import ImageCard from './ImageCard';
 import PaginatedItems from './Pagination';
-import { unsplashBaseUrl } from '@/lib/utils';
 
 export interface UnsplashRespond {
     id: string;
@@ -60,15 +61,19 @@ export default function FoundImages() {
                 </div>
             ) : (
                 <>
-                    <div className="grid grid-cols-1 items-center justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3">
-                        {images.map((img) => (
-                            <ImageCard
-                                img={img.urls.regular}
-                                key={img.id}
-                                imgData={img}
-                            />
-                        ))}
-                    </div>
+                    <ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 500: 2, 700: 3 }}>
+                        <Masonry
+                            columnsCount={3}
+                            gutter="20px">
+                            {images.map((img) => (
+                                <ImageCard
+                                    img={img.urls.regular}
+                                    key={img.id}
+                                    imgData={img}
+                                />
+                            ))}
+                        </Masonry>
+                    </ResponsiveMasonry>
                     {query && orderBy && page && (
                         <PaginatedItems
                             pagesAmount={totalPages}

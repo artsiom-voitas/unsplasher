@@ -13,7 +13,7 @@ interface AddToFavoritesButtonProps {
 export default function AddToFavoritesButton({ imageData }: AddToFavoritesButtonProps) {
     const initialFavorites: string[] = [];
     const [favorites, setFavorites] = useLocalStorage('favorites', initialFavorites);
-    const imgLink: string = imageData?.urls.regular
+    const imgLink: string = imageData?.urls.regular;
 
     const [isLiked, setIsLiked] = useState<boolean>(
         favorites.filter((link) => link === imgLink).length === 1
@@ -25,7 +25,6 @@ export default function AddToFavoritesButton({ imageData }: AddToFavoritesButton
         } else {
             const unliked = favorites.filter((link) => link !== imgLink);
             setFavorites(unliked);
-            console.log(unliked);
         }
     }, [isLiked]);
 

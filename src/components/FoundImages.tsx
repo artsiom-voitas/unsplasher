@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { PacmanLoader } from 'react-spinners';
 import ImageCard from './ImageCard';
 import PaginatedItems from './Pagination';
+import { unsplashBaseUrl } from '@/lib/utils';
 
 export interface UnsplashRespond {
     id: string;
@@ -30,7 +31,7 @@ export default function FoundImages() {
             setIsLoading(true);
             axios
                 .get(
-                    `https://api.unsplash.com/search/photos?page=${page}&query=${query}&per_page=15&client_id=${unsplashKey}&order_by=${orderBy}`
+                    `${unsplashBaseUrl}page=${page}&query=${query}&per_page=15&client_id=${unsplashKey}&order_by=${orderBy}`
                 )
                 .then((res) => {
                     const pagesAmount = res.data['total_pages'];
@@ -49,7 +50,7 @@ export default function FoundImages() {
     }, [setImages, page, query, orderBy]);
 
     return (
-        <section>
+        <section className="mt-8">
             {isLoading ? (
                 <div className="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]">
                     <PacmanLoader
@@ -68,15 +69,13 @@ export default function FoundImages() {
                             />
                         ))}
                     </div>
-                    {query && orderBy && page ? (
+                    {query && orderBy && page && (
                         <PaginatedItems
                             pagesAmount={totalPages}
                             currentCollection={query}
                             currentOrder={orderBy}
                             currentPage={page}
                         />
-                    ) : (
-                        <></>
                     )}
                 </>
             )}

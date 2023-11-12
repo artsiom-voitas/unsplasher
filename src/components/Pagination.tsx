@@ -17,7 +17,7 @@ export default function PaginatedItems({
     currentOrder
 }: PaginatedItemsProps) {
     const { push } = useRouter();
-    const page = Number(currentPage) - 1;
+    const page: number = currentPage - 1;
     const totalPages: number = pagesAmount > 0 ? pagesAmount : 100;
 
     const handlePageClick = (event: any) => {

@@ -1,15 +1,13 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-
-import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
 interface PaginatedItemsProps {
     currentCollection: string;
     currentOrder: string;
     pagesAmount: number;
-    currentPage: string;
+    currentPage: number;
 }
 
 export default function PaginatedItems({
@@ -19,13 +17,12 @@ export default function PaginatedItems({
     currentOrder
 }: PaginatedItemsProps) {
     const { push } = useRouter();
-    const [itemOffset, setItemOffset] = useState<number>(1);
     const page = Number(currentPage) - 1;
+    const totalPages: number = pagesAmount > 0 ? pagesAmount : 100;
 
     const handlePageClick = (event: any) => {
-        const newOffset = event.selected + 1;
-        setItemOffset(newOffset);
-        push(`/?collection=${currentCollection}&page=${newOffset}&order_by=${currentOrder}`);
+        const newPage = event.selected + 1;
+        push(`/?collection=${currentCollection}&page=${newPage}&order_by=${currentOrder}`);
     };
 
     return (
@@ -35,7 +32,7 @@ export default function PaginatedItems({
             nextLabel=">"
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
-            pageCount={pagesAmount}
+            pageCount={totalPages}
             previousLabel="<"
             forcePage={page}
             renderOnZeroPageCount={null}

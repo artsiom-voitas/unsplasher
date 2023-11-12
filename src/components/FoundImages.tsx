@@ -74,7 +74,7 @@ export default function FoundImages() {
                             pagesAmount={totalPages}
                             currentCollection={query}
                             currentOrder={orderBy}
-                            currentPage={page}
+                            currentPage={Number(page)}
                         />
                     )}
                 </>

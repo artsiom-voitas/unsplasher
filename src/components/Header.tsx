@@ -12,7 +12,7 @@ interface HeaderProps {
 
 export default function Header({ isFilterBtnsShowed }: HeaderProps) {
     return (
-        <header className="my-4 flex items-center justify-between">
+        <header className="my-6 flex items-center justify-between">
             <>{isFilterBtnsShowed && <FilterButtons />}</>
             <Link
                 href={'/'}

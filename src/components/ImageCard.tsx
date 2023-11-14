@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import AddToFavoritesButton from './AddToFavoritesButton';
 import { UnsplashRespond } from './FoundImages';
+import AddToFavoritesButton from './ui/add-to-favorites-button';
 import { Card } from './ui/card';
 
 interface ImageCardProps {

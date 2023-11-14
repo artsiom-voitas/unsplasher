@@ -1,14 +1,13 @@
 'use client';
 
-import { unsplashBaseUrl } from '@/lib/utils';
+import { unsplashBaseUrl, unsplashKey } from '@/lib/utils';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import ImageCard from './ImageCard';
-import PaginatedItems from './Pagination';
-import Spinner from './Spinner';
-import { unsplashKey } from '@/api';
+import PaginatedItems from './ui/pagination';
+import Loader from './ui/loader';
 
 export interface UnsplashRespond {
     id: string;
@@ -53,7 +52,7 @@ export default function FoundImages() {
     return (
         <section className="mt-8">
             {isLoading ? (
-                <Spinner />
+                <Loader />
             ) : (
                 <>
                     <ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 500: 2, 700: 3 }}>

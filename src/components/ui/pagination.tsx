@@ -3,19 +3,19 @@
 import { useRouter } from 'next/navigation';
 import ReactPaginate from 'react-paginate';
 
-interface PaginatedItemsProps {
+interface PaginationProps {
     currentCollection: string;
     currentOrder: string;
     pagesAmount: number;
     currentPage: number;
 }
 
-export default function PaginatedItems({
+export default function Pagination({
     pagesAmount,
     currentPage,
     currentCollection,
     currentOrder
-}: PaginatedItemsProps) {
+}: PaginationProps) {
     const { push } = useRouter();
     const page: number = currentPage - 1;
     const totalPages: number = pagesAmount > 0 ? pagesAmount : 100;

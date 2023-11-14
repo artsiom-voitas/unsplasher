@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Heart from 'react-animated-heart';
 import { useLocalStorage } from 'usehooks-ts';
-import { UnsplashRespond } from './FoundImages';
+import { UnsplashRespond } from '../FoundImages';
 
 interface AddToFavoritesButtonProps {
     imageData: UnsplashRespond;

@@ -1,7 +1,7 @@
 'use client';
 
 import Header from '@/components/Header';
-import Spinner from '@/components/Spinner';
+import Loader from '@/components/ui/loader';
 import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -32,7 +32,7 @@ export default function Favorites() {
                 Your Favorite pictures
             </h1>
             {isLoading ? (
-                <Spinner />
+                <Loader />
             ) : (
                 <ResponsiveMasonry
                     className="my-8"

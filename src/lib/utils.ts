@@ -6,3 +6,4 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const unsplashBaseUrl = 'https://api.unsplash.com/search/photos?';
+export const unsplashKey = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;

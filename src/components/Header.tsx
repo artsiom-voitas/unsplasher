@@ -16,7 +16,7 @@ export default function Header({ isFilterBtnsShowed }: HeaderProps) {
             <>{isFilterBtnsShowed && <FilterButtons />}</>
             <Link
                 href={'/'}
-                className="scroll-m-20 text-2xl font-semibold tracking-tight transition-colors sm:text-3xl">
+                className="scroll-m-20 text-xl font-semibold tracking-tight transition-colors sm:text-3xl">
                 Unsplasher
             </Link>
             <div className="flex items-center gap-3">

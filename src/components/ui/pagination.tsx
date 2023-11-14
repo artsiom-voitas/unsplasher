@@ -28,17 +28,18 @@ export default function Pagination({
 
     return (
         <ReactPaginate
-            className="my-8 flex items-center justify-center gap-4"
-            breakLabel={<MoreHorizontal />}
-            nextLabel={<ChevronRight />}
+            className="my-8 flex items-center justify-center gap-1 sm:gap-4"
+            breakLabel={<MoreHorizontal size={18} />}
+            nextLabel={<ChevronRight size={18} />}
             onPageChange={handlePageClick}
+            marginPagesDisplayed={1}
             pageRangeDisplayed={5}
             pageCount={totalPages}
-            previousLabel={<ChevronLeft />}
+            previousLabel={<ChevronLeft size={18} />}
             forcePage={page}
             renderOnZeroPageCount={null}
             pageClassName={
-                'w-8 h-8 flex items-center justify-center hover:opacity-[70%] bg-black dark:bg-white text-white dark:text-black rounded-xl cursor-pointer'
+                'w-6 h-6 sm:w-8 sm:h-8 p-4 flex items-center justify-center hover:opacity-[70%] bg-black dark:bg-white text-white dark:text-black rounded-xl cursor-pointer'
             }
             activeClassName={'opacity-[50%] hover:cursor-default hover:opacity-[50%]'}
             activeLinkClassName={'hover:cursor-default'}

@@ -1,10 +1,8 @@
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Unsplasher',
@@ -17,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <html
                 lang="en"
                 suppressHydrationWarning>
-                <body className={`${inter.className}`}>
+                <body className={`${GeistSans.className}`}>
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"

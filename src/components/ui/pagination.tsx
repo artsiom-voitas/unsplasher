@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import ReactPaginate from 'react-paginate';
 
@@ -29,7 +29,7 @@ export default function Pagination({
     return (
         <ReactPaginate
             className="my-8 flex items-center justify-center gap-4"
-            breakLabel="..."
+            breakLabel={<MoreHorizontal />}
             nextLabel={<ChevronRight />}
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
@@ -38,7 +38,7 @@ export default function Pagination({
             forcePage={page}
             renderOnZeroPageCount={null}
             pageClassName={
-                'w-8 h-8 flex items-center justify-center hover:opacity-[70%] bg-dark dark:bg-white text-white dark:text-black rounded-xl cursor-pointer font-bold'
+                'w-8 h-8 flex items-center justify-center hover:opacity-[70%] bg-black dark:bg-white text-white dark:text-black rounded-xl cursor-pointer'
             }
             activeClassName={'opacity-[50%] hover:cursor-default hover:opacity-[50%]'}
             activeLinkClassName={'hover:cursor-default'}

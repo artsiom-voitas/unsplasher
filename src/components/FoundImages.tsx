@@ -6,13 +6,15 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import ImageCard from './ImageCard';
-import PaginatedItems from './ui/pagination';
 import Loader from './ui/loader';
+import PaginatedItems from './ui/pagination';
 
 export interface UnsplashRespond {
     id: string;
+    alt_description: string;
     urls: {
         regular: string;
+        full: string;
     };
 }
 
@@ -31,7 +33,7 @@ export default function FoundImages() {
             setIsLoading(true);
             axios
                 .get(
-                    `${unsplashBaseUrl}page=${page}&query=${query}&per_page=15&client_id=${unsplashKey}&order_by=${orderBy}`
+                    `${unsplashBaseUrl}page=${page}&query=${query}&per_page=30&client_id=${unsplashKey}&order_by=${orderBy}`
                 )
                 .then((res) => {
                     const pagesAmount = res.data['total_pages'];
@@ -61,7 +63,6 @@ export default function FoundImages() {
                             gutter="20px">
                             {images.map((img) => (
                                 <ImageCard
-                                    img={img.urls.regular}
                                     key={img.id}
                                     imgData={img}
                                 />

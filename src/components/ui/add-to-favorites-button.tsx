@@ -1,9 +1,9 @@
 'use client';
 
+import useFavorites from '@/hooks/useFavorites';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Heart from 'react-animated-heart';
-import { useLocalStorage } from 'usehooks-ts';
 import { UnsplashRespond } from '../FoundImages';
 
 interface AddToFavoritesButtonProps {
@@ -11,25 +11,21 @@ interface AddToFavoritesButtonProps {
 }
 
 export default function AddToFavoritesButton({ imageData }: AddToFavoritesButtonProps) {
-    const initialFavorites: string[] = [];
-    const [favorites, setFavorites] = useLocalStorage('favorites', initialFavorites);
-    const imgLink: string = imageData?.urls.regular;
+    const [favorites, setFavorites] = useFavorites();
+    const imgId: string = imageData?.id;
+    const isImgInFavorites = favorites.filter((favorite) => favorite?.id === imgId).length > 0;
+    const [isLiked, setIsLiked] = useState<boolean>(isImgInFavorites);
 
-    const [isLiked, setIsLiked] = useState<boolean>(
-        favorites.filter((link) => link === imgLink).length === 1
-    );
-
-    useEffect(() => {
-        if (isLiked) {
-            setFavorites((favorites) => [...favorites, imgLink]);
-        } else {
-            const unliked = favorites.filter((link) => link !== imgLink);
-            setFavorites(unliked);
-        }
-    }, [isLiked]);
+    useEffect(() => {}, [isLiked]);
 
     function onClick(): void {
         setIsLiked(!isLiked);
+        if (!isLiked) {
+            setFavorites((favorites: any) => [...favorites, imageData]);
+        } else {
+            const unliked = favorites.filter((favorite) => favorite?.id !== imgId);
+            setFavorites(unliked);
+        }
     }
 
     return (

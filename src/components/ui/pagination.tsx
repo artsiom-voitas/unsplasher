@@ -19,7 +19,6 @@ export default function Pagination({
 }: PaginationProps) {
     const { push } = useRouter();
     const page: number = currentPage - 1;
-    const totalPages: number = pagesAmount > 0 ? pagesAmount : 100;
 
     const handlePageClick = (event: any) => {
         const newPage = event.selected + 1;
@@ -34,7 +33,7 @@ export default function Pagination({
             onPageChange={handlePageClick}
             marginPagesDisplayed={1}
             pageRangeDisplayed={5}
-            pageCount={totalPages}
+            pageCount={pagesAmount}
             previousLabel={<ChevronLeft size={18} />}
             forcePage={page}
             renderOnZeroPageCount={null}

@@ -1,29 +1,21 @@
 'use client';
 
 import Header from '@/components/Header';
+import ImageCard from '@/components/ImageCard';
 import Loader from '@/components/ui/loader';
-import { Card } from '@/components/ui/card';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import useFavorites from '@/hooks/useFavorites';
 import { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import { useReadLocalStorage } from 'usehooks-ts';
 
 export default function Favorites() {
-    const favorites = useReadLocalStorage<string[]>('favorites');
-    const [pageFav, setPageFav] = useState<string[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const AnimatedCard = motion(Card);
+    const [favorites] = useFavorites();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        setIsLoading(true);
-        if (favorites) {
-            setPageFav(favorites);
-        }
         setTimeout(() => {
             setIsLoading(false);
         }, 1500);
-    }, [favorites]);
+    }, []);
 
     return (
         <main className='w-full" container h-full'>
@@ -40,20 +32,11 @@ export default function Favorites() {
                     <Masonry
                         columnsCount={3}
                         gutter="20px">
-                        {pageFav.map((favorite, key) => (
-                            <AnimatedCard
-                                className="h-fit max-w-[410px] rounded-xl"
-                                whileHover={{ scale: 1.05 }}
-                                key={key}>
-                                <Image
-                                    key={key}
-                                    src={favorite}
-                                    width={410}
-                                    height={513}
-                                    className="rounded-xl"
-                                    alt="One of your favorite pictures"
-                                />
-                            </AnimatedCard>
+                        {favorites.map((favorite) => (
+                            <ImageCard
+                                imgData={favorite}
+                                key={favorite.id}
+                            />
                         ))}
                     </Masonry>
                 </ResponsiveMasonry>

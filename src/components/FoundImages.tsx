@@ -6,8 +6,9 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import ImageCard from './ImageCard';
-import Loader from './ui/loader';
+import Loader from './SkeletonImages';
 import PaginatedItems from './ui/pagination';
+import SkeletonImages from './SkeletonImages';
 
 export interface UnsplashRespond {
     id: string;
@@ -54,7 +55,7 @@ export default function FoundImages() {
     return (
         <section className="mt-8">
             {isLoading ? (
-                <Loader />
+                <SkeletonImages />
             ) : (
                 <>
                     <ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 500: 2, 700: 3 }}>

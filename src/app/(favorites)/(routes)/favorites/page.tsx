@@ -2,7 +2,7 @@
 
 import Header from '@/components/Header';
 import ImageCard from '@/components/ImageCard';
-import Loader from '@/components/ui/loader';
+import SkeletonImages from '@/components/SkeletonImages';
 import useFavorites from '@/hooks/useFavorites';
 import { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
@@ -24,7 +24,7 @@ export default function Favorites() {
                 Your Favorite pictures
             </h1>
             {isLoading ? (
-                <Loader />
+                <SkeletonImages />
             ) : (
                 <ResponsiveMasonry
                     className="my-8"

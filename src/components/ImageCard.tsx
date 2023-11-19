@@ -12,7 +12,7 @@ const AnimatedCard = motion(Card);
 export default function ImageCard({ imgData }: ImageCardProps) {
     return (
         <AnimatedCard
-            className="relative h-fit max-w-[410px] rounded-xl"
+            className="relative h-fit max-w-[432px] rounded-xl"
             whileHover={{ scale: 1.05 }}>
             <Image
                 className="rounded-xl"

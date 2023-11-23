@@ -3,8 +3,8 @@ import { UserButton } from '@clerk/nextjs';
 import { Heart } from 'lucide-react';
 import Link from 'next/link';
 import FilterButtons from './FilterButtons';
-import { ToggleTheme } from './ui/toggle-theme';
 import { Button } from './ui/button';
+import { ToggleTheme } from './ui/toggle-theme';
 
 interface HeaderProps {
     isFilterBtnsShowed: boolean;
@@ -13,13 +13,13 @@ interface HeaderProps {
 export default function Header({ isFilterBtnsShowed }: HeaderProps) {
     return (
         <header className="my-6 flex items-center justify-between">
-            <>{isFilterBtnsShowed && <FilterButtons />}</>
             <Link
                 href={'/'}
-                className="scroll-m-20 text-xl font-semibold tracking-tight transition-colors sm:text-3xl">
+                className="scroll-m-20 text-center text-2xl font-semibold tracking-tight transition-colors hover:opacity-90 sm:text-3xl">
                 Unsplasher
             </Link>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1 sm:gap-3">
+                <>{isFilterBtnsShowed && <FilterButtons />}</>
                 <Button
                     variant="outline"
                     size="icon">
@@ -27,14 +27,12 @@ export default function Header({ isFilterBtnsShowed }: HeaderProps) {
                         <Heart />
                     </Link>
                 </Button>
-                <div className="flex flex-col-reverse items-center gap-1 sm:flex-row sm:gap-3">
-                    <ToggleTheme />
-                    <Button
-                        variant="outline"
-                        size="icon">
-                        <UserButton afterSignOutUrl="/" />
-                    </Button>
-                </div>
+                <ToggleTheme />
+                <Button
+                    variant="outline"
+                    size="icon">
+                    <UserButton afterSignOutUrl="/" />
+                </Button>
             </div>
         </header>
     );

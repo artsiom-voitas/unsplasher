@@ -13,7 +13,7 @@ export default function ImageCard({ imgData }: ImageCardProps) {
     return (
         <AnimatedCard
             className="relative h-fit max-w-[432px] rounded-xl"
-            whileHover={{ scale: 1.05 }}>
+            whileHover={{ scale: 1.03 }}>
             <Image
                 className="rounded-xl"
                 src={imgData?.urls?.regular}

@@ -48,50 +48,48 @@ export default function FilterButtons() {
     }, [query, page, orderBy]);
 
     return (
-        <div className="flex flex-col justify-between gap-1 sm:flex-row sm:gap-3">
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <Button
-                        variant="outline"
-                        className="w-20 text-xs capitalize sm:w-full sm:text-sm">
-                        {collection}
-                    </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-36 sm:w-56">
-                    <DropdownMenuRadioGroup
-                        value={collection}
-                        onValueChange={setCollection}>
-                        {collections.map((filter, key) => (
-                            <Link
-                                key={key}
-                                href={`/?collection=${filter}&page=1&order_by=relevant`}>
-                                <DropdownMenuRadioItem
-                                    value={filter}
-                                    className="text-xs capitalize sm:text-sm">
-                                    {filter}
-                                </DropdownMenuRadioItem>
-                            </Link>
-                        ))}
-                    </DropdownMenuRadioGroup>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuRadioGroup
-                        value={orderValue}
-                        onValueChange={setOrderValue}>
-                        {order.map((filter, key) => (
-                            <Link
-                                key={key}
-                                href={`/?collection=${query}&page=1&order_by=${filter}`}>
-                                <DropdownMenuRadioItem
-                                    value={filter}
-                                    className="text-xs capitalize sm:text-sm
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button
+                    variant="outline"
+                    className="w-20 text-xs capitalize sm:text-sm">
+                    {collection}
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-36 sm:w-56">
+                <DropdownMenuRadioGroup
+                    value={collection}
+                    onValueChange={setCollection}>
+                    {collections.map((filter, key) => (
+                        <Link
+                            key={key}
+                            href={`/?collection=${filter}&page=1&order_by=relevant`}>
+                            <DropdownMenuRadioItem
+                                value={filter}
+                                className="text-xs capitalize sm:text-sm">
+                                {filter}
+                            </DropdownMenuRadioItem>
+                        </Link>
+                    ))}
+                </DropdownMenuRadioGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup
+                    value={orderValue}
+                    onValueChange={setOrderValue}>
+                    {order.map((filter, key) => (
+                        <Link
+                            key={key}
+                            href={`/?collection=${query}&page=1&order_by=${filter}`}>
+                            <DropdownMenuRadioItem
+                                value={filter}
+                                className="text-xs capitalize sm:text-sm
                                     ">
-                                    {filter}
-                                </DropdownMenuRadioItem>
-                            </Link>
-                        ))}
-                    </DropdownMenuRadioGroup>
-                </DropdownMenuContent>
-            </DropdownMenu>
-        </div>
+                                {filter}
+                            </DropdownMenuRadioItem>
+                        </Link>
+                    ))}
+                </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+        </DropdownMenu>
     );
 }

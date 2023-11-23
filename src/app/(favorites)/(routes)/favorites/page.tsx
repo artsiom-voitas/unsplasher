@@ -18,7 +18,7 @@ export default function Favorites() {
     }, []);
 
     return (
-        <main className='w-full" container h-full'>
+        <main className="container h-full w-full p-2 sm:p-8">
             <Header isFilterBtnsShowed={false} />
             <h1 className="mt-4 flex scroll-m-20 justify-center text-4xl font-extrabold tracking-tight lg:text-5xl">
                 Your Favorite pictures

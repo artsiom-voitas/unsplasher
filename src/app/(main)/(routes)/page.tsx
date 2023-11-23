@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 
 export default function Home() {
     return (
-        <main className="container h-full w-full p-2 sm:p-8">
+        <main className="container h-full w-full px-2 sm:px-8">
             <Header isFilterBtnsShowed={true} />
             <FoundImages />
         </main>

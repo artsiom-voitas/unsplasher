@@ -6,6 +6,7 @@ import {
     DropdownMenuContent,
     DropdownMenuRadioGroup,
     DropdownMenuRadioItem,
+    DropdownMenuSeparator,
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import Link from 'next/link';
@@ -72,17 +73,7 @@ export default function FilterButtons() {
                             </Link>
                         ))}
                     </DropdownMenuRadioGroup>
-                </DropdownMenuContent>
-            </DropdownMenu>
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <Button
-                        variant="outline"
-                        className="sm: w-20 text-xs capitalize sm:w-full sm:text-sm">
-                        {orderValue}
-                    </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-36 sm:w-56">
+                    <DropdownMenuSeparator />
                     <DropdownMenuRadioGroup
                         value={orderValue}
                         onValueChange={setOrderValue}>

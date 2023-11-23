@@ -2,15 +2,16 @@ import { UserButton } from '@clerk/nextjs';
 
 import { Heart } from 'lucide-react';
 import Link from 'next/link';
-import FilterButtons from './FilterButtons';
+import { memo } from 'react';
+import FiltersDropdownMenu from './FiltersDropdownMenu';
 import { Button } from './ui/button';
 import { ToggleTheme } from './ui/toggle-theme';
 
 interface HeaderProps {
-    isFilterBtnsShowed: boolean;
+    isFilterDropdownDisplayed: boolean;
 }
 
-export default function Header({ isFilterBtnsShowed }: HeaderProps) {
+const Header = memo(function Header({ isFilterDropdownDisplayed }: HeaderProps) {
     return (
         <header className="my-6 flex items-center justify-between">
             <Link
@@ -19,7 +20,7 @@ export default function Header({ isFilterBtnsShowed }: HeaderProps) {
                 Unsplasher
             </Link>
             <div className="flex items-center gap-1 sm:gap-3">
-                <>{isFilterBtnsShowed && <FilterButtons />}</>
+                <>{isFilterDropdownDisplayed && <FiltersDropdownMenu />}</>
                 <Button
                     variant="outline"
                     size="icon">
@@ -36,4 +37,6 @@ export default function Header({ isFilterBtnsShowed }: HeaderProps) {
             </div>
         </header>
     );
-}
+});
+
+export default Header;

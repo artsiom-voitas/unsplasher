@@ -6,9 +6,9 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import ImageCard from './ImageCard';
-import Loader from './SkeletonImages';
-import PaginatedItems from './ui/pagination';
 import SkeletonImages from './SkeletonImages';
+import PaginatedItems from './ui/pagination';
+import ImagesCards from './ImagesCards';
 
 export interface UnsplashRespond {
     id: string;
@@ -40,10 +40,10 @@ export default function FoundImages() {
                     const pagesAmount = res.data['total_pages'];
                     const imgs = res.data.results;
 
-                    setImages(imgs);
                     if (pagesAmount > 100) {
                         setTotalPages(100);
                     }
+                    setImages(imgs);
 
                     setTimeout(() => {
                         setIsLoading(false);
@@ -57,28 +57,13 @@ export default function FoundImages() {
             {isLoading ? (
                 <SkeletonImages />
             ) : (
-                <>
-                    <ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 500: 2, 700: 3 }}>
-                        <Masonry
-                            columnsCount={3}
-                            gutter="20px">
-                            {images.map((img) => (
-                                <ImageCard
-                                    key={img.id}
-                                    imgData={img}
-                                />
-                            ))}
-                        </Masonry>
-                    </ResponsiveMasonry>
-                    {query && orderBy && page && (
-                        <PaginatedItems
-                            pagesAmount={totalPages}
-                            currentCollection={query}
-                            currentOrder={orderBy}
-                            currentPage={Number(page)}
-                        />
-                    )}
-                </>
+                <ImagesCards
+                    images={images}
+                    query={query}
+                    orderBy={orderBy}
+                    page={page}
+                    pagesAmount={totalPages}
+                />
             )}
         </section>
     );

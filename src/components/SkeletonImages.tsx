@@ -14,8 +14,8 @@ export default function SkeletonImages() {
 
     return (
         <ResponsiveMasonry
-            className="my-8"
-            columnsCountBreakPoints={{ 300: 1, 700: 2, 1100: 3 }}>
+            className="my-8 w-full"
+            columnsCountBreakPoints={{ 300: 1, 500: 2, 700: 3 }}>
             <Masonry
                 columnsCount={3}
                 gutter="20px">

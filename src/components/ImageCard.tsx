@@ -9,6 +9,7 @@ interface ImageCardProps {
 }
 
 const AnimatedCard = motion(Card);
+
 export default function ImageCard({ imgData }: ImageCardProps) {
     return (
         <AnimatedCard

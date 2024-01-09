@@ -1,7 +1,7 @@
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { UnsplashRespond } from './FoundImages';
 import ImageCard from './ImageCard';
-import PaginatedItems from './ui/pagination';
+import { ImagesCardPagination } from './ImagesCardPagination';
 
 interface ImagesCardsProps {
     images: UnsplashRespond[];
@@ -19,10 +19,10 @@ export default function ImagesCards({
 }: ImagesCardsProps) {
     const pagination =
         query && orderBy && page && pagesAmount ? (
-            <PaginatedItems
-                pagesAmount={pagesAmount}
+            <ImagesCardPagination
                 currentCollection={query}
                 currentOrder={orderBy}
+                pagesAmount={pagesAmount}
                 currentPage={Number(page)}
             />
         ) : (

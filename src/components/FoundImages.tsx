@@ -4,11 +4,8 @@ import { unsplashBaseUrl, unsplashKey } from '@/lib/utils';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import ImageCard from './ImageCard';
-import SkeletonImages from './SkeletonImages';
-import PaginatedItems from './ui/pagination';
 import ImagesCards from './ImagesCards';
+import SkeletonImages from './SkeletonImages';
 
 export interface UnsplashRespond {
     id: string;

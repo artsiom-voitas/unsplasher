@@ -10,7 +10,7 @@ export default function FavoriteImages() {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        if (favorites.length > 0) {
+        if (favorites) {
             setTimeout(() => {
                 setIsLoading(false);
             }, 1500);
@@ -20,7 +20,7 @@ export default function FavoriteImages() {
     return (
         <>
             <h1 className="mb-8 mt-4 flex scroll-m-20 justify-center text-4xl font-extrabold tracking-tight lg:text-5xl">
-                Your Favorite pictures
+                {`Your Favorite pictures ${favorites.length < 1 ? 'are empty, for now!' : ''}`}
             </h1>
             {isLoading ? <SkeletonImages /> : <ImagesCards images={favorites} />}
         </>

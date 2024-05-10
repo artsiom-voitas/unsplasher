@@ -53,6 +53,7 @@ export function ImagesCardPagination({
             }
             renderedPages.unshift(
                 <PaginationLink
+                    key="first"
                     href={`/?collection=${currentCollection}&page=${1}&order_by=${currentOrder}`}>
                     {1}
                 </PaginationLink>
@@ -64,6 +65,7 @@ export function ImagesCardPagination({
                 renderedPages.push(<PaginationEllipsis key="ellipsis-end" />);
             renderedPages.push(
                 <PaginationLink
+                    key="last"
                     href={`/?collection=${currentCollection}&page=${pagesAmount}&order_by=${currentOrder}`}>
                     {pagesAmount}
                 </PaginationLink>
